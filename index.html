@@ -41,7 +41,7 @@
   .card-media video,
   .card-media img {
     width: 100%;
-    height: 320px;
+    height: 280px;
     object-fit: cover;
     display: block;
   }
@@ -50,12 +50,18 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2px;
-    margin: 0 -28px 18px;
+    margin: 0 -28px 2px;
     overflow: hidden;
+  }
+  .card-media-grid video {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
   }
   .card-media-grid img {
     width: 100%;
-    height: 220px;
+    height: 200px;
     object-fit: cover;
     display: block;
   }
@@ -64,12 +70,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2px;
-    margin: 0 -28px 18px;
+    margin: 0 -28px 2px;
     overflow: hidden;
   }
   .card-media-grid-3 img {
     width: 100%;
-    height: 200px;
+    height: 160px;
     object-fit: cover;
     display: block;
   }
@@ -486,7 +492,32 @@
   </video>
   <div class="hero-overlay"></div>
 
-  <!-- Text is embedded in the hero video -->
+  <div class="hero-content">
+    <p class="hero-eyebrow">A personal guide by Luccas</p>
+    <div class="hero-title-block">
+      <span class="hero-serif-top">BALI</span>
+      <span class="hero-serif-mid">THROUGH</span>
+      <span class="hero-script-line">My Eyes</span>
+    </div>
+    <div class="hero-cats">
+      <span>Stays</span>
+      <span class="hdot">◆</span>
+      <span>Cafés</span>
+      <span class="hdot">◆</span>
+      <span>Gyms</span>
+      <span class="hdot">◆</span>
+      <span>& More</span>
+    </div>
+    <div class="hero-divider-line"></div>
+    <div class="hero-cities">
+      <span>Canggu</span>
+      <span class="dot">◆</span>
+      <span>Ubud</span>
+      <span class="dot">◆</span>
+      <span>Uluwatu</span>
+    </div>
+    <p class="hero-tagline">See Bali Differently</p>
+  </div>
 </section>
 
 <!-- NAV -->
@@ -638,7 +669,7 @@
       <img src="media/media_15.jpg" alt="OMNI pool aerial" loading="lazy">
       <img src="media/media_16.jpg" alt="OMNI lounge" loading="lazy">
     </div>
-    <div class="card-media" style="margin: 2px -28px 18px;">
+    <div class="card-media" >
       <img src="media/media_17.jpg" alt="OMNI cardio floor" loading="lazy">
     </div>
     <p class="card-body">Very aesthetic. Small training floor, open rooftop area, decent pool. One thing I didn't like: you can't use your laptop in the restaurant — they charge extra for the coworking space. Small thing but it bothered me.</p>
@@ -717,7 +748,7 @@
       <img src="media/media_28.jpg" alt="Pressure Spa treatment room" loading="lazy">
       <img src="media/media_29.jpg" alt="Pressure Spa products" loading="lazy">
     </div>
-    <div class="card-media" style="margin: 2px -28px 18px;">
+    <div class="card-media" >
       <img src="media/media_30.jpg" alt="Pressure Spa sign" loading="lazy">
     </div>
     <p class="card-body">An amazing massage experience — but what makes it stand out is the space itself. Highly aesthetic, deeply atmospheric, fully Instagrammable. One of those places you remember not just for the treatment but for how it felt to be there. Don't miss it.</p>
@@ -775,7 +806,7 @@
       <img src="media/media_35.jpg" alt="Prana Ubud pool" loading="lazy">
       <img src="media/media_36.jpg" alt="Prana Ubud aerial" loading="lazy">
     </div>
-    <div class="card-media-grid" style="margin-top: 2px;">
+    <div class="card-media-grid" >
       <img src="media/media_37.jpg" alt="Prana Ubud bedroom" loading="lazy">
       <img src="media/media_38.jpg" alt="Prana Ubud living room" loading="lazy">
     </div>
@@ -796,7 +827,7 @@
       <img src="media/media_40.jpg" alt="Rice fields portrait" loading="lazy">
       <img src="media/media_41.jpg" alt="Rice fields walking" loading="lazy">
     </div>
-    <div class="card-media" style="margin: 2px -28px 18px;">
+    <div class="card-media" >
       <video autoplay muted loop playsinline>
         <source src="media/media_42.mp4" type="video/mp4">
       </video>
@@ -816,7 +847,7 @@
       <img src="media/media_43.jpg" alt="Monkey Forest" loading="lazy">
       <img src="media/media_44.jpg" alt="Monkey Forest close up" loading="lazy">
     </div>
-    <div class="card-media" style="margin: 2px -28px 18px;">
+    <div class="card-media" >
       <video autoplay muted loop playsinline>
         <source src="media/media_45.mp4" type="video/mp4">
       </video>
@@ -842,7 +873,7 @@
       <img src="media/media_48.jpg" alt="Villa Larente living room" loading="lazy">
       <img src="media/media_49.jpg" alt="Villa Larente pool" loading="lazy">
     </div>
-    <div class="card-media-grid" style="margin-top: 2px;">
+    <div class="card-media-grid" >
       <img src="media/media_46.jpg" alt="Villa Larente interior" loading="lazy">
       <video autoplay muted loop playsinline>
         <source src="media/media_47.mp4" type="video/mp4">
@@ -863,11 +894,11 @@
       <img src="media/media_50.jpg" alt="Bambu Fitness sign" loading="lazy">
       <img src="media/media_51.jpg" alt="Bambu Fitness mirror selfie" loading="lazy">
     </div>
-    <div class="card-media-grid" style="margin-top: 2px;">
+    <div class="card-media-grid" >
       <img src="media/media_52.jpg" alt="Bambu pool area" loading="lazy">
       <img src="media/media_53.jpg" alt="Bambu Oasis sign" loading="lazy">
     </div>
-    <div class="card-media" style="margin: 2px -28px 18px;">
+    <div class="card-media" >
       <video autoplay muted loop playsinline>
         <source src="media/media_54.mp4" type="video/mp4">
       </video>
@@ -888,7 +919,7 @@
       <img src="media/media_55.jpg" alt="Artisan coffee bar" loading="lazy">
       <img src="media/media_56.jpg" alt="Artisan dining" loading="lazy">
     </div>
-    <div class="card-media-grid-3" style="margin-top: 2px;">
+    <div class="card-media-grid-3" >
       <img src="media/media_57.jpg" alt="Artisan lounge" loading="lazy">
       <img src="media/media_58.jpg" alt="Artisan food" loading="lazy">
       <img src="media/media_59.jpg" alt="Artisan interior" loading="lazy">
@@ -904,11 +935,11 @@
       <img src="media/media_60.jpg" alt="Chela neon sign" loading="lazy">
       <img src="media/media_61.jpg" alt="Chela garden" loading="lazy">
     </div>
-    <div class="card-media-grid" style="margin-top: 2px;">
+    <div class="card-media-grid" >
       <img src="media/media_62.jpg" alt="Chela bamboo interior" loading="lazy">
       <img src="media/media_63.jpg" alt="Chela aerial" loading="lazy">
     </div>
-    <div class="card-media" style="margin: 2px -28px 18px;">
+    <div class="card-media" >
       <video autoplay muted loop playsinline>
         <source src="media/media_64.mp4" type="video/mp4">
       </video>
@@ -926,14 +957,14 @@
       <h3 class="card-name">Teja Restaurant</h3>
       <span class="tag top">Best of the Trip</span>
     </div>
-    <div class="card-media" style="margin: 0 -28px 2px;">
+    <div class="card-media" >
       <img src="media/media_69.jpg" alt="Teja sign" loading="lazy">
     </div>
-    <div class="card-media-grid" style="margin: 0 -28px 2px; gap: 2px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;">
+    <div class="card-media-grid" >
       <img src="media/media_65.jpg" alt="Teja dining room" style="width:100%;height:220px;object-fit:cover;" loading="lazy">
       <img src="media/media_66.jpg" alt="Teja terrace" style="width:100%;height:220px;object-fit:cover;" loading="lazy">
     </div>
-    <div class="card-media-grid" style="margin: 2px -28px 18px; gap: 2px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;">
+    <div class="card-media-grid" >
       <img src="media/media_67.jpg" alt="Teja outdoor" style="width:100%;height:220px;object-fit:cover;" loading="lazy">
       <img src="media/media_68.jpg" alt="Teja ocean view" style="width:100%;height:220px;object-fit:cover;" loading="lazy">
     </div>
@@ -951,7 +982,7 @@
       <img src="media/media_70.jpg" alt="Kala entrance" loading="lazy">
       <img src="media/media_71.jpg" alt="Kala dinner group" loading="lazy">
     </div>
-    <div class="card-media-grid-3" style="margin-top: 2px;">
+    <div class="card-media-grid-3" >
       <img src="media/media_72.jpg" alt="Kala terrace" loading="lazy">
       <img src="media/media_73.jpg" alt="Kala interior" loading="lazy">
       <img src="media/media_74.jpg" alt="Kala door" loading="lazy">
