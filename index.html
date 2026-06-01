@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bali Tips — Luccas</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Jost:ital,wght@0,200;0,300;0,400;1,200;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #111009;
+    --bg2: #1a1710;
+    --bg3: #201e18;
+    --gold: #C9A96E;
+    --gold-dim: #8a7048;
+    --warm-white: #EDE8DE;
+    --muted: #7a7265;
+    --divider: rgba(201,169,110,0.18);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--bg);
+    color: var(--warm-white);
+    overflow-x: hidden;
+    font-weight: 300;
+  }
+
+
+  /* ── MEDIA ── */
+  .card-media {
+    margin: 0 -28px 18px;
+    overflow: hidden;
+    max-height: 320px;
+    background: #000;
+  }
+  .card-media:first-child { margin-top: -28px; border-radius: 0; }
+  .card-media video,
+  .card-media img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-media-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin: 0 -28px 18px;
+    overflow: hidden;
+  }
+  .card-media-grid img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-media-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    margin: 0 -28px 18px;
+    overflow: hidden;
+  }
+  .card-media-grid-3 img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+  /* ── HERO ── */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 32px;
+    position: relative;
+    background: var(--bg);
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 50% 70%, rgba(201,169,110,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-top {
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: rise 1s ease forwards 0.2s;
+  }
+
+  .hero-script {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(72px, 20vw, 160px);
+    color: var(--warm-white);
+    line-height: 0.95;
+    opacity: 0;
+    animation: rise 1.2s ease forwards 0.5s;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-sub {
+    font-weight: 200;
+    font-size: 13px;
+    letter-spacing: 0.28em;
+    text-transform: lowercase;
+    color: var(--gold);
+    margin-top: 28px;
+    opacity: 0;
+    animation: rise 1s ease forwards 0.9s;
+  }
+
+  .hero-cities {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 52px;
+    opacity: 0;
+    animation: rise 1s ease forwards 1.2s;
+  }
+
+  .hero-cities span {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .hero-cities .dot { font-size: 6px; color: var(--gold-dim); }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+
+  /* ── VIDEO HERO ── */
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.8);
+    font-weight: 200;
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: rise 1s ease forwards 0.3s;
+  }
+
+  .hero-title-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+    opacity: 0;
+    animation: rise 1.2s ease forwards 0.5s;
+  }
+
+  .hero-serif-top {
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: clamp(52px, 16vw, 110px);
+    letter-spacing: 0.18em;
+    color: var(--warm-white);
+    text-transform: uppercase;
+  }
+
+  .hero-serif-mid {
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: clamp(28px, 8vw, 60px);
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-top: -4px;
+  }
+
+  .hero-script-line {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(52px, 16vw, 110px);
+    color: var(--warm-white);
+    line-height: 1.1;
+    margin-top: -4px;
+  }
+
+  .hero-cats {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 28px;
+    opacity: 0;
+    animation: rise 1s ease forwards 0.9s;
+  }
+
+  .hero-cats span {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(237,232,222,0.7);
+    font-weight: 300;
+  }
+
+  .hdot {
+    font-size: 5px;
+    color: var(--gold) !important;
+    letter-spacing: 0 !important;
+  }
+
+  .hero-divider-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, transparent, rgba(201,169,110,0.5), transparent);
+    margin: 24px auto;
+    opacity: 0;
+    animation: rise 1s ease forwards 1.1s;
+  }
+
+  .hero-tagline {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(22px, 6vw, 36px);
+    color: var(--gold);
+    margin-top: 16px;
+    opacity: 0;
+    animation: rise 1s ease forwards 1.4s;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(17,16,9,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .nav-scroll {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .nav-scroll::-webkit-scrollbar { display: none; }
+
+  nav a {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 15px 16px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: color 0.2s;
+    font-weight: 300;
+  }
+  nav a:hover { color: var(--gold); }
+
+  /* ── LAYOUT ── */
+  .wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── CITY HEADER ── */
+  .city-block {
+    padding: 72px 24px 0;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .city-script {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(48px, 12vw, 90px);
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .city-label {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 40px;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    padding: 48px 24px;
+    max-width: 800px;
+    margin: 0 auto;
+    border-top: 1px solid var(--divider);
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--divider);
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--divider);
+    padding: 24px 28px;
+    margin-bottom: 2px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .card:hover {
+    border-color: rgba(201,169,110,0.4);
+    background: var(--bg3);
+  }
+
+  .card.hero-card {
+    border-color: rgba(201,169,110,0.35);
+    background: var(--bg3);
+    padding: 28px 28px;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .card-name {
+    font-family: 'Great Vibes', cursive;
+    font-size: 30px;
+    color: var(--warm-white);
+    line-height: 1.1;
+  }
+
+  .card.hero-card .card-name { font-size: 36px; color: var(--gold); }
+
+  .tag {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--gold-dim);
+    padding: 4px 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .tag.top { background: var(--gold); color: var(--bg); }
+  .tag.dark { background: #3a3020; color: var(--gold); }
+
+  .card-body {
+    font-size: 13.5px;
+    line-height: 1.85;
+    color: rgba(237,232,222,0.65);
+    font-weight: 300;
+  }
+
+  .card-tip {
+    margin-top: 14px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-tip::before { content: '→'; }
+
+  /* ── QUOTE ── */
+  .pull-quote {
+    padding: 40px 24px;
+    max-width: 800px;
+    margin: 0 auto;
+    border-top: 1px solid var(--divider);
+  }
+
+  .pull-quote p {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(22px, 5vw, 34px);
+    color: var(--gold);
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  /* ── GYM RANK ── */
+  .gym-rank {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  /* ── 2 COL ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  @media (max-width: 540px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--divider);
+    padding: 72px 24px;
+    text-align: center;
+  }
+
+  footer .f-script {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(44px, 10vw, 80px);
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  footer p {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    line-height: 2.2;
+  }
+
+  footer a { color: var(--gold-dim); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: var(--gold); }
+
+  /* ── SPACER LINE ── */
+  .spacer {
+    max-width: 800px;
+    margin: 0 auto 0;
+    padding: 0 24px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Video background -->
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="media/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">A personal guide by Luccas</p>
+    <div class="hero-title-block">
+      <span class="hero-serif-top">BALI</span>
+      <span class="hero-serif-mid">THROUGH</span>
+      <span class="hero-script-line">My Eyes</span>
+    </div>
+    <div class="hero-cats">
+      <span>Stays</span>
+      <span class="hdot">◆</span>
+      <span>Cafés</span>
+      <span class="hdot">◆</span>
+      <span>Gyms</span>
+      <span class="hdot">◆</span>
+      <span>& More</span>
+    </div>
+    <div class="hero-divider-line"></div>
+    <div class="hero-cities">
+      <span>Canggu</span>
+      <span class="dot">◆</span>
+      <span>Ubud</span>
+      <span class="dot">◆</span>
+      <span>Uluwatu</span>
+    </div>
+    <p class="hero-tagline">See Bali Differently</p>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-scroll">
+    <a href="#canggu-stay">Stay</a>
+    <a href="#canggu-breakfast">Breakfast</a>
+    <a href="#canggu-gyms">Gyms</a>
+    <a href="#canggu-dining">Dining</a>
+    <a href="#canggu-wellness">Wellness</a>
+    <a href="#canggu-hotels">Hotels</a>
+    <a href="#ubud">Ubud</a>
+    <a href="#uluwatu">Uluwatu</a>
+  </div>
+</nav>
+
+<!-- ════ CANGGU ════ -->
+<div id="canggu-stay" class="city-block">
+  <div class="city-script">Canggu</div>
+  <div class="city-label">4 days · first stop</div>
+</div>
+
+<!-- STAY -->
+<section class="section">
+  <div class="section-label">Where I stayed</div>
+  <div class="card hero-card">
+    <div class="card-header">
+      <h3 class="card-name">Villa Solaya</h3>
+      <span class="tag top">Big Highlight</span>
+    </div>
+    <div class="card-media">
+      <video autoplay muted loop playsinline>
+        <source src="media/media_0.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="card-body">Brand new, incredible design — one of those places that genuinely stops you. Super aesthetic, beautifully finished, very conveniently located close to everything. One note: our unit didn't get direct sun on the pool, worth checking when you book. Found it on Booking.com at a better price than Airbnb.</p>
+    <span class="card-tip">Book on Booking.com — better price than Airbnb</span>
+  </div>
+</section>
+
+<!-- BREAKFAST -->
+<section class="section" id="canggu-breakfast">
+  <div class="section-label">Breakfast & cafes</div>
+
+  <div class="card hero-card">
+    <div class="card-header">
+      <h3 class="card-name">Brunch Club Pererenan</h3>
+      <span class="tag top">Must Visit</span>
+    </div>
+    <div class="card-media-grid-3">
+      <img src="media/media_1.jpg" alt="Brunch Club tree" loading="lazy">
+      <img src="media/media_2.jpg" alt="Brunch Club sign" loading="lazy">
+      <img src="media/media_3.jpg" alt="Porncake" loading="lazy">
+    </div>
+    <p class="card-body">Huge open rooftop, tables, open space — and a massive tree right in the middle of the café. The kind of place that actually has soul. The atmosphere is perfect. Order the pancake. Don't skip it.</p>
+    <span class="card-tip">The pancake is non-negotiable</span>
+  </div>
+
+  <div style="height:2px"></div>
+
+  <div class="card hero-card">
+    <div class="card-header">
+      <h3 class="card-name">Zai Cafe</h3>
+      <span class="tag top">Personal Fav</span>
+    </div>
+    <div class="card-media-grid">
+      <img src="media/media_4.jpg" alt="Zai Cafe food" loading="lazy">
+      <img src="media/media_5.jpg" alt="Zai Cafe interior" loading="lazy">
+    </div>
+    <p class="card-body">One of my top spots in Canggu. The fruit plate bowl and eggs are excellent. Everything tastes fresh and consistent. The kind of place you return to without hesitation.</p>
+  </div>
+
+  <div style="height:2px"></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-name">Nude Cafe</h3>
+        <span class="tag dark">Cafe</span>
+      </div>
+      <div class="card-media-grid">
+      <img src="media/media_6.jpg" alt="Nude Cafe coffee" loading="lazy">
+      <img src="media/media_7.jpg" alt="Nude Cafe interior" loading="lazy">
+    </div>
+    <p class="card-body">Small and cozy. Great for a slower morning when you want something more intimate.</p>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-name">Ele Restaurant</h3>
+        <span class="tag dark">Breakfast + Dinner</span>
+      </div>
+      <div class="card-media-grid">
+      <img src="media/media_8.jpg" alt="Ele Restaurant food" loading="lazy">
+      <img src="media/media_9.jpg" alt="Ele Restaurant interior" loading="lazy">
+    </div>
+    <p class="card-body">Works well for both breakfast and a healthy dinner. A reliable spot for clean eating.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GYMS -->
+<section class="section" id="canggu-gyms">
+  <div class="section-label">Fitness</div>
+
+  <div class="pull-quote" style="border:none; padding: 0 0 28px;">
+    <p>"The fitness lifestyle in Bali is unlike anything I've seen. Hyrox, reformer, boxing, pilates — everywhere. The people here genuinely take care of their bodies."</p>
+  </div>
+
+  <div class="card hero-card">
+    <span class="gym-rank">#1 in Canggu</span>
+    <div class="card-header">
+      <h3 class="card-name">Reload Sanctuary</h3>
+      <span class="tag top">Top Pick</span>
+    </div>
+    <div class="card-media">
+      <video autoplay muted loop playsinline>
+        <source src="media/media_10.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="card-body">Brand new. Chic crowd, beautiful design, restaurant on site, full recovery area. Simply a place that can only exist in Bali. You won't find this anywhere else.</p>
+  </div>
+
+  <div style="height:2px"></div>
+
+  <div class="card">
+    <span class="gym-rank">#2 in Canggu</span>
+    <div class="card-header">
+      <h3 class="card-name">Obsidian</h3>
+      <span class="tag dark">Gym</span>
+    </div>
+    <div class="card-media-grid-3">
+      <img src="media/media_11.jpg" alt="Obsidian mirror" loading="lazy">
+      <img src="media/media_12.jpg" alt="Obsidian pool aerial" loading="lazy">
+      <img src="media/media_13.jpg" alt="Obsidian pool" loading="lazy">
+    </div>
+    <p class="card-body">Serious facility. The gym itself is beautiful — great pool, sauna, restaurant. Crowd leans influencer and competitive bodybuilder — not my vibe personally, but objectively a stunning gym.</p>
+  </div>
+
+  <div style="height:2px"></div>
+
+  <div class="card">
+    <span class="gym-rank">#3 in Canggu</span>
+    <div class="card-header">
+      <h3 class="card-name">OMNI</h3>
+      <span class="tag dark">Gym</span>
+    </div>
+    <div class="card-media-grid-3">
+      <img src="media/media_14.jpg" alt="OMNI gym floor" loading="lazy">
+      <img src="media/media_15.jpg" alt="OMNI pool aerial" loading="lazy">
+      <img src="media/media_16.jpg" alt="OMNI lounge" loading="lazy">
+    </div>
+    <div class="card-media" style="margin: 2px -28px 18px;">
+      <img src="media/media_17.jpg" alt="OMNI cardio floor" loading="lazy">
+    </div>
+    <p class="card-body">Very aesthetic. Small training floor, open rooftop area, decent pool. One thing I didn't like: you can't use your laptop in the restaurant — they charge extra for the coworking space. Small thing but it bothered me.</p>
+  </div>
+</section>
+
+<!-- DINING + SHOPPING + SUNSET -->
+<section class="section" id="canggu-dining">
+  <div class="section-label">Dining, shopping & sunset</div>
+
+  <div class="card hero-card">
+    <div class="card-header">
+      <h3 class="card-name">Ina Ré Bali</h3>
+      <span class="tag top">Fine Dining</span>
+    </div>
+    <div class="card-media-grid-3">
+      <img src="media/media_18.jpg" alt="Ina Re interior" loading="lazy">
+      <img src="media/media_19.jpg" alt="Ina Re flowers" loading="lazy">
+      <img src="media/media_20.jpg" alt="Ina Re paella" loading="lazy">
+    </div>
+    <p class="card-body">Desa Kitsune — same group as Savaya. Mediterranean-leaning, standout paella, refined atmosphere. Yes, it's expensive by Bali standards. But this is fine dining. Beautiful pool, café for breakfast, big DJ nights regularly. A full-day spot.</p>
+  </div>
+
+  <div style="height:2px"></div>
+
+  <div class="card hero-card">
+    <div class="card-header">
+      <h3 class="card-name">Open House</h3>
+      <span class="tag top">Seseh</span>
+    </div>
+    <p class="card-body">Great spot in Pererenan — healthy food where you build your own plate, sauna, pool, and nice house music running in the background. The kind of place that somehow does everything well without feeling like it's trying. A full experience, not just a meal.</p>
+  </div>
+
+  <div style="height:2px"></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-name">La Brisa</h3>
+        <span class="tag dark">Sunset</span>
+      </div>
+      <div class="card-media-grid-3">
+      <img src="media/media_23.jpg" alt="La Brisa golden hour" loading="lazy">
+      <img src="media/media_24.jpg" alt="La Brisa beach" loading="lazy">
+      <img src="media/media_25.jpg" alt="La Brisa sunset" loading="lazy">
+    </div>
+    <p class="card-body">Best sunset spot in Canggu. Not the fanciest — but the vibe is exactly right. Table fully redeemable. Food is good, cocktails work.</p>
+      <span class="card-tip">Book a table facing the water</span>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-name">Karja Concept Store</h3>
+        <span class="tag dark">Shopping</span>
+      </div>
+      <div class="card-media">
+      <video autoplay muted loop playsinline>
+        <source src="media/media_26.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="card-body">My favourite clothing shop. Wide linen collection — shirts, trousers, men and women. I did a shoot for them (partners) but the recommendation stands on its own.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WELLNESS -->
+<section class="section" id="canggu-wellness">
+  <div class="section-label">Wellness & experiences</div>
+
+  <div class="card hero-card">
+    <div class="card-header">
+      <h3 class="card-name">Pressure Spa</h3>
+      <span class="tag top">Must Experience</span>
+    </div>
+    <div class="card-media-grid-3">
+      <img src="media/media_27.jpg" alt="Pressure Spa entrance" loading="lazy">
+      <img src="media/media_28.jpg" alt="Pressure Spa treatment room" loading="lazy">
+      <img src="media/media_29.jpg" alt="Pressure Spa products" loading="lazy">
+    </div>
+    <div class="card-media" style="margin: 2px -28px 18px;">
+      <img src="media/media_30.jpg" alt="Pressure Spa sign" loading="lazy">
+    </div>
+    <p class="card-body">An amazing massage experience — but what makes it stand out is the space itself. Highly aesthetic, deeply atmospheric, fully Instagrammable. One of those places you remember not just for the treatment but for how it felt to be there. Don't miss it.</p>
+  </div>
+</section>
+
+<!-- HOTELS -->
+<section class="section" id="canggu-hotels">
+  <div class="section-label">Hotels worth visiting</div>
+
+  <div class="grid-2">
+    <div class="card hero-card">
+      <div class="card-header">
+        <h3 class="card-name">Nirjhara Bali</h3>
+        <span class="tag dark">Stay</span>
+      </div>
+      <div class="card-media-grid">
+      <img src="media/media_31.jpg" alt="Nirjhara exterior" loading="lazy">
+      <video autoplay muted loop playsinline>
+        <source src="media/media_32.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="card-body">Canopy suite — a duplex with a massive rooftop bathtub, surrounded by trees and greenery, with a waterfall nearby. Service is a 10/10. Go here to disconnect.</p>
+    </div>
+    <div class="card hero-card">
+      <div class="card-header">
+        <h3 class="card-name">Ulaman Eco Resort</h3>
+        <span class="tag dark">Day Pass</span>
+      </div>
+      <div class="card-media-grid">
+      <img src="media/media_33.jpg" alt="Ulaman bamboo resort" loading="lazy">
+      <video autoplay muted loop playsinline>
+        <source src="media/media_34.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="card-body">The bamboo resort that went viral — and earned it. Spa, yoga, beautiful aesthetic. Day passes available. Worth every minute.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ UBUD ════ -->
+<div id="ubud" class="city-block" style="padding-top: 80px;">
+  <div class="city-script">Ubud</div>
+  <div class="city-label">Day trip · rice fields & jungle</div>
+</div>
+
+<section class="section">
+  <div class="section-label">Where I stayed</div>
+  <div class="card hero-card">
+    <div class="card-header">
+      <h3 class="card-name">Prana Ubud</h3>
+      <span class="tag top">Big Highlight</span>
+    </div>
+    <div class="card-media-grid">
+      <img src="media/media_35.jpg" alt="Prana Ubud pool" loading="lazy">
+      <img src="media/media_36.jpg" alt="Prana Ubud aerial" loading="lazy">
+    </div>
+    <div class="card-media-grid" style="margin-top: 2px;">
+      <img src="media/media_37.jpg" alt="Prana Ubud bedroom" loading="lazy">
+      <img src="media/media_38.jpg" alt="Prana Ubud living room" loading="lazy">
+    </div>
+    <p class="card-body">Villa built like it's inside a container — in the best way. Breathtaking views, infinity pool, incredible design, great service. Yes, it's a bit far from the Ubud centre. Worth every minute of that drive.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label">Must do</div>
+
+  <div class="card hero-card">
+    <div class="card-header">
+      <h3 class="card-name">Tegalalang Rice Fields</h3>
+      <span class="tag top">Non-Negotiable</span>
+    </div>
+    <div class="card-media-grid-3">
+      <img src="media/media_39.jpg" alt="Rice fields terraces" loading="lazy">
+      <img src="media/media_40.jpg" alt="Rice fields portrait" loading="lazy">
+      <img src="media/media_41.jpg" alt="Rice fields walking" loading="lazy">
+    </div>
+    <div class="card-media" style="margin: 2px -28px 18px;">
+      <video autoplay muted loop playsinline>
+        <source src="media/media_42.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="card-body">Go to Bali and skip the rice fields? Not an option. The terraces are extraordinary — the photos you'll take here are unlike anything else. A genuine once-in-a-lifetime experience.</p>
+    <span class="card-tip">Go early morning to beat the crowd</span>
+  </div>
+
+  <div style="height:2px"></div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-name">Sacred Monkey Forest</h3>
+      <span class="tag dark">Activity</span>
+    </div>
+    <div class="card-media-grid">
+      <img src="media/media_43.jpg" alt="Monkey Forest" loading="lazy">
+      <img src="media/media_44.jpg" alt="Monkey Forest close up" loading="lazy">
+    </div>
+    <div class="card-media" style="margin: 2px -28px 18px;">
+      <video autoplay muted loop playsinline>
+        <source src="media/media_45.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="card-body">Classic Ubud stop. Entertaining, fun, a bit chaotic. Keep food and sunglasses away from the monkeys — they will take them.</p>
+  </div>
+</section>
+
+<!-- ════ ULUWATU ════ -->
+<div id="uluwatu" class="city-block" style="padding-top: 80px;">
+  <div class="city-script">Uluwatu</div>
+  <div class="city-label">Final days · cliffs & ocean</div>
+</div>
+
+<section class="section">
+  <div class="section-label">Where I stayed</div>
+  <div class="card hero-card">
+    <div class="card-header">
+      <h3 class="card-name">Villa Larente</h3>
+      <span class="tag dark">Bingin Beach</span>
+    </div>
+    <div class="card-media-grid">
+      <img src="media/media_48.jpg" alt="Villa Larente living room" loading="lazy">
+      <img src="media/media_49.jpg" alt="Villa Larente pool" loading="lazy">
+    </div>
+    <div class="card-media-grid" style="margin-top: 2px;">
+      <img src="media/media_46.jpg" alt="Villa Larente interior" loading="lazy">
+      <video autoplay muted loop playsinline>
+        <source src="media/media_47.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="card-body">The interior design is exceptional — modern, curved glass wall, two separate bedrooms, great pool. Found on Booking.com. Bingin Beach as a location was okay but may not suit everyone. The villa itself was absolutely worth it.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label">Fitness</div>
+  <div class="card hero-card">
+    <div class="card-header">
+      <h3 class="card-name">Bambu Fitness</h3>
+      <span class="tag top">The Iconic One</span>
+    </div>
+    <div class="card-media-grid">
+      <img src="media/media_50.jpg" alt="Bambu Fitness sign" loading="lazy">
+      <img src="media/media_51.jpg" alt="Bambu Fitness mirror selfie" loading="lazy">
+    </div>
+    <div class="card-media-grid" style="margin-top: 2px;">
+      <img src="media/media_52.jpg" alt="Bambu pool area" loading="lazy">
+      <img src="media/media_53.jpg" alt="Bambu Oasis sign" loading="lazy">
+    </div>
+    <div class="card-media" style="margin: 2px -28px 18px;">
+      <video autoplay muted loop playsinline>
+        <source src="media/media_54.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="card-body">The most famous gym in Uluwatu — and the most different from Canggu. The CrossFit area is enormous. Machine area is smaller than expected. The crowd is shirtless, surf-culture, outdoor energy. Not cheap. Pool area is a 10/10.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label">Breakfast & cafes</div>
+  <div class="grid-2">
+    <div class="card hero-card">
+      <div class="card-header">
+        <h3 class="card-name">Artisan Cafe</h3>
+        <span class="tag top">Fav</span>
+      </div>
+      <div class="card-media-grid">
+      <img src="media/media_55.jpg" alt="Artisan coffee bar" loading="lazy">
+      <img src="media/media_56.jpg" alt="Artisan dining" loading="lazy">
+    </div>
+    <div class="card-media-grid-3" style="margin-top: 2px;">
+      <img src="media/media_57.jpg" alt="Artisan lounge" loading="lazy">
+      <img src="media/media_58.jpg" alt="Artisan food" loading="lazy">
+      <img src="media/media_59.jpg" alt="Artisan interior" loading="lazy">
+    </div>
+    <p class="card-body">Build-your-own breakfast. Great vibe, flexible menu, enjoyable from the moment you sit down.</p>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-name">Chela Bali</h3>
+        <span class="tag dark">Breakfast</span>
+      </div>
+      <div class="card-media-grid">
+      <img src="media/media_60.jpg" alt="Chela neon sign" loading="lazy">
+      <img src="media/media_61.jpg" alt="Chela garden" loading="lazy">
+    </div>
+    <div class="card-media-grid" style="margin-top: 2px;">
+      <img src="media/media_62.jpg" alt="Chela bamboo interior" loading="lazy">
+      <img src="media/media_63.jpg" alt="Chela aerial" loading="lazy">
+    </div>
+    <div class="card-media" style="margin: 2px -28px 18px;">
+      <video autoplay muted loop playsinline>
+        <source src="media/media_64.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="card-body">Super aesthetic space. Food 8/10. Service was decent but I expected a bit more given the setting.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label">Dining</div>
+
+  <div class="card hero-card">
+    <div class="card-header">
+      <h3 class="card-name">Teja Restaurant</h3>
+      <span class="tag top">Best of the Trip</span>
+    </div>
+    <div class="card-media" style="margin: 0 -28px 2px;">
+      <img src="media/media_69.jpg" alt="Teja sign" loading="lazy">
+    </div>
+    <div class="card-media-grid" style="margin: 0 -28px 2px; gap: 2px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;">
+      <img src="media/media_65.jpg" alt="Teja dining room" style="width:100%;height:220px;object-fit:cover;" loading="lazy">
+      <img src="media/media_66.jpg" alt="Teja terrace" style="width:100%;height:220px;object-fit:cover;" loading="lazy">
+    </div>
+    <div class="card-media-grid" style="margin: 2px -28px 18px; gap: 2px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;">
+      <img src="media/media_67.jpg" alt="Teja outdoor" style="width:100%;height:220px;object-fit:cover;" loading="lazy">
+      <img src="media/media_68.jpg" alt="Teja ocean view" style="width:100%;height:220px;object-fit:cover;" loading="lazy">
+    </div>
+    <p class="card-body">The best restaurant of my entire trip. Fine dining — sophisticated location, beautiful setting, flawless and fast service, food that actually lives up to all of it. A genuine 10/10. If you do one fine dining in Uluwatu, it's this one.</p>
+  </div>
+
+  <div style="height:2px"></div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-name">Kala Restaurant</h3>
+      <span class="tag dark">Greek · 7/10</span>
+    </div>
+    <div class="card-media-grid">
+      <img src="media/media_70.jpg" alt="Kala entrance" loading="lazy">
+      <img src="media/media_71.jpg" alt="Kala dinner group" loading="lazy">
+    </div>
+    <div class="card-media-grid-3" style="margin-top: 2px;">
+      <img src="media/media_72.jpg" alt="Kala terrace" loading="lazy">
+      <img src="media/media_73.jpg" alt="Kala interior" loading="lazy">
+      <img src="media/media_74.jpg" alt="Kala door" loading="lazy">
+    </div>
+    <p class="card-body">Greek concept. Decent food — solid 7/10. Good when you want a break from Asian flavours. Not a must, but a good option to have.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-script">See you in Bali.</div>
+  <p>Guide by <a href="https://instagram.com/luccastorres">@luccastorres</a></p>
+  <p style="margin-top:6px; font-size:11px; opacity:0.4;">All opinions personal · no paid placements · Karja is a brand partner (disclosed)</p>
+</footer>
+
+</body>
+</html>
